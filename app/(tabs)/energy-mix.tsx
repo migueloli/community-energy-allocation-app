@@ -70,8 +70,6 @@ export default function EnergyMix() {
           }
           style={[GLOBAL_STYLES.dropdown, { elevation: 1 }]}
           textStyle={GLOBAL_STYLES.dropdownText}
-          zIndex={0}
-          zIndexInverse={0}
           containerStyle={{ elevation: 1 }}
           placeholder="Select a user"
         />

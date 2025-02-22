@@ -1,4 +1,3 @@
-// EnergyChart.tsx
 import { View } from "react-native";
 import { DonutChart } from "react-native-circular-chart";
 import { GLOBAL_STYLES } from "../constants/styles";
@@ -35,7 +34,7 @@ export function EnergyChart({ data }: EnergyChartProps) {
         data={chartData}
         radius={100}
         containerWidth={250}
-        containerHeight={250}
+        containerHeight={220}
         strokeWidth={20}
       />
     </View>

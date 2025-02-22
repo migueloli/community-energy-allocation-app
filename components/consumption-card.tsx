@@ -1,4 +1,3 @@
-// ConsumptionCard.tsx
 import { COLORS } from "constants/colors";
 import { GLOBAL_STYLES } from "constants/styles";
 import { ActivityIndicator, LayoutChangeEvent, Text, View } from "react-native";
