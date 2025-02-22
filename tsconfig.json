@@ -2,16 +2,23 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "jsx": "react-native",
+    "typeRoots": [
+      ".yarn/sdks/types",
+      ".yarn/__virtual__/@types-virtual-*/node_modules/@types"
+    ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+      "@/*": ["./src/*"]
+    },
+    "moduleResolution": "bundler",
+    "allowArbitraryExtensions": true
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx",
+    "**/*.tsx", 
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
+    "expo-env.d.ts",
+    ".yarn/**/*"
   ]
 }

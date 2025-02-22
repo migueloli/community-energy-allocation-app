@@ -1,26 +1,42 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+export const STATUS_COLORS: Record<string, string> = {
+  pending: '#FFA500',    // Orange
+  approved: '#4CAF50',   // Green
+  rejected: '#FF5722',   // Red
+};
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+export const ENERGY_SOURCE_COLORS: Record<string, string> = {
+  solar: '#4CAF50',
+  hydro: '#2196F3',
+  wind: '#FFC107',
+  grid: '#9E9E9E',
+};
 
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+export const COLORS = {
+  // Primary colors
+  primary: '#00A651',
+  secondary: '#006633',
+  
+  // Background colors
+  background: '#00A651',
+  cardBackground: '#FFFFFF',
+  
+  // Text colors
+  textPrimary: '#000000',
+  textSecondary: '#666666',
+  textLight: '#FFFFFF',
+  
+  // Status colors
+  ...STATUS_COLORS,
+  
+  // Energy source colors
+  ...ENERGY_SOURCE_COLORS,
+  
+  // UI elements
+  border: '#E0E0E0',
+  inactive: '#CCCCCC',
+  activeText: '#FFFFFF',
+  
+  // Tab colors
+  tabActive: '#00A651',
+  tabInactive: '#008B41'
 };
