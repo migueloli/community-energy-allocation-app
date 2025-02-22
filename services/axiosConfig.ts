@@ -1,6 +1,8 @@
 import axios from "axios";
+import { Platform } from "react-native";
 
-const BASE_URL = "http://localhost:8081";
+const BASE_URL =
+  Platform.OS === "android" ? "http://10.0.2.2:8081" : "http://localhost:8081";
 
 // Configure axios defaults
 axios.defaults.baseURL = BASE_URL;
