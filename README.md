@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# ILO Community Energy Allocation App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is a React Native app built with Expo for managing and allocating community energy resources.
 
-## Get started
+## Getting Started
 
 1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 2. Start the app
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
 ```bash
-npm run reset-project
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. Choose your platform:
 
-## Learn more
+- Android emulator: Press 'a' in terminal or click the Android option in Expo DevTools
+- iOS simulator: Press 'i' in terminal or click the iOS option in Expo DevTools
+- Physical device: Scan the QR code with Expo Go app (available on Android and iOS)
 
-To learn more about developing your project with Expo, look at the following resources:
+## Project Structure
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+This project uses Expo Router with file-based routing. The main code is in the app directory.
 
-## Join the community
+## Backend Configuration
 
-Join our community of developers creating universal apps.
+The app connects to a backend service. By default, it's configured to use:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+`http://10.0.2.2:8081` for Android emulators
+`http://localhost:8081` for iOS and web
+
+### Changing the Backend URL
+
+If you need to connect to a different backend server, update the `BASE_URL` in `services/axiosConfig.ts`:
+
+```ts
+import axios from "axios";
+import { Platform } from "react-native";
+
+// Update these URLs to point to your backend server
+const BASE_URL =
+  Platform.OS === "android" ? "http://10.0.2.2:8081" : "http://localhost:8081";
+
+// Configure axios defaults
+axios.defaults.baseURL = BASE_URL;
+axios.defaults.headers.common["Content-Type"] = "application/json";
+
+// Add request interceptor for authentication
+axios.interceptors.request.use(
+  (config) => {
+    // You can add authentication tokens here
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Add response interceptor for error handling
+axios.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    // You can add global error handling here
+    return Promise.reject(error);
+  }
+);
+
+export default axios;
+```
